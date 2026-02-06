@@ -79,20 +79,91 @@ except:
 st.set_page_config(
     page_title="Complete ML Dashboard - 21 Features",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="auto",  # Auto hide sidebar on mobile
+    menu_items=None
 )
 
-# CSS with proper contrast
+# MOBILE RESPONSIVE CSS with proper contrast
 st.markdown("""
     <style>
-    .main-header { color: #0d47a1; font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem; }
-    .feature-header { color: #1976d2; font-size: 1.8rem; font-weight: bold; margin: 1rem 0; }
-    .insight-box { background: #e3f2fd; border-left: 4px solid #1976d2; padding: 15px; border-radius: 5px; margin: 10px 0; color: #0d47a1; }
-    .success-box { background: #e8f5e9; border-left: 4px solid #388e3c; padding: 15px; border-radius: 5px; margin: 10px 0; color: #1b5e20; }
-    .alert-box { background: #fff3e0; border-left: 4px solid #f57c00; padding: 15px; border-radius: 5px; margin: 10px 0; color: #e65100; }
-    .critical-box { background: #ffebee; border-left: 4px solid #d32f2f; padding: 15px; border-radius: 5px; margin: 10px 0; color: #b71c1c; }
-    .xai-panel { background: #f5f5f5; border: 2px solid #424242; padding: 20px; border-radius: 10px; margin: 15px 0; color: #212121; }
+    /* Desktop & Laptop (> 768px) */
+    @media (min-width: 769px) {
+        .main-header { color: #0d47a1; font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem; }
+        .feature-header { color: #1976d2; font-size: 1.8rem; font-weight: bold; margin: 1rem 0; }
+        .insight-box { background: #e3f2fd; border-left: 4px solid #1976d2; padding: 15px; border-radius: 5px; margin: 10px 0; color: #0d47a1; }
+        .success-box { background: #e8f5e9; border-left: 4px solid #388e3c; padding: 15px; border-radius: 5px; margin: 10px 0; color: #1b5e20; }
+        .alert-box { background: #fff3e0; border-left: 4px solid #f57c00; padding: 15px; border-radius: 5px; margin: 10px 0; color: #e65100; }
+        .critical-box { background: #ffebee; border-left: 4px solid #d32f2f; padding: 15px; border-radius: 5px; margin: 10px 0; color: #b71c1c; }
+        .xai-panel { background: #f5f5f5; border: 2px solid #424242; padding: 20px; border-radius: 10px; margin: 15px 0; color: #212121; }
+    }
+    
+    /* Tablet (481px - 768px) */
+    @media (min-width: 481px) and (max-width: 768px) {
+        .main-header { color: #0d47a1; font-size: 1.8rem; font-weight: bold; margin-bottom: 0.8rem; }
+        .feature-header { color: #1976d2; font-size: 1.3rem; font-weight: bold; margin: 0.8rem 0; }
+        .insight-box { background: #e3f2fd; border-left: 4px solid #1976d2; padding: 12px; border-radius: 5px; margin: 8px 0; color: #0d47a1; }
+        .success-box { background: #e8f5e9; border-left: 4px solid #388e3c; padding: 12px; border-radius: 5px; margin: 8px 0; color: #1b5e20; }
+        .alert-box { background: #fff3e0; border-left: 4px solid #f57c00; padding: 12px; border-radius: 5px; margin: 8px 0; color: #e65100; }
+        .critical-box { background: #ffebee; border-left: 4px solid #d32f2f; padding: 12px; border-radius: 5px; margin: 8px 0; color: #b71c1c; }
+        .xai-panel { background: #f5f5f5; border: 2px solid #424242; padding: 12px; border-radius: 8px; margin: 8px 0; color: #212121; }
+    }
+    
+    /* Mobile (<= 480px) */
+    @media (max-width: 480px) {
+        .main-header { color: #0d47a1; font-size: 1.4rem; font-weight: bold; margin-bottom: 0.5rem; }
+        .feature-header { color: #1976d2; font-size: 1.1rem; font-weight: bold; margin: 0.5rem 0; }
+        .insight-box { background: #e3f2fd; border-left: 4px solid #1976d2; padding: 10px; border-radius: 5px; margin: 5px 0; color: #0d47a1; font-size: 0.9rem; }
+        .success-box { background: #e8f5e9; border-left: 4px solid #388e3c; padding: 10px; border-radius: 5px; margin: 5px 0; color: #1b5e20; font-size: 0.9rem; }
+        .alert-box { background: #fff3e0; border-left: 4px solid #f57c00; padding: 10px; border-radius: 5px; margin: 5px 0; color: #e65100; font-size: 0.9rem; }
+        .critical-box { background: #ffebee; border-left: 4px solid #d32f2f; padding: 10px; border-radius: 5px; margin: 5px 0; color: #b71c1c; font-size: 0.9rem; }
+        .xai-panel { background: #f5f5f5; border: 2px solid #424242; padding: 10px; border-radius: 5px; margin: 5px 0; color: #212121; font-size: 0.9rem; }
+    }
+    
+    /* Responsive input & button sizing */
+    @media (max-width: 480px) {
+        .stButton > button { width: 100%; padding: 8px !important; font-size: 0.9rem; }
+        .stSelectbox { font-size: 0.9rem; }
+        .stRadio { font-size: 0.9rem; }
+        .stSlider { font-size: 0.9rem; }
+        .stMetric { text-align: center; }
+    }
+    
+    /* Hide sidebar on very small screens */
+    @media (max-width: 480px) {
+        .sidebar { display: none !important; }
+    }
     </style>
+""", unsafe_allow_html=True)
+
+# ============================================================================
+# DEVICE DETECTION & RESPONSIVE HELPERS
+# ============================================================================
+def get_responsive_columns(default_cols=3):
+    """Get number of columns based on device type"""
+    # Using JavaScript detection through streamlit query params
+    query_params = st.query_params
+    device = query_params.get('device', 'desktop')
+    
+    if 'mobile' in str(device).lower() or 'iphone' in str(device).lower():
+        return 1  # Mobile: 1 column
+    elif 'tablet' in str(device).lower() or 'ipad' in str(device).lower():
+        return 2  # Tablet: 2 columns
+    else:
+        return default_cols  # Desktop: default columns
+
+# Client-side device detection using JavaScript
+st.markdown("""
+    <script>
+    function detectDevice() {
+        const userAgent = navigator.userAgent;
+        if (/mobile|iphone|ipod|android/i.test(userAgent)) {
+            window.location.href = '?device=mobile';
+        } else if (/ipad|tablet/i.test(userAgent)) {
+            window.location.href = '?device=tablet';
+        }
+    }
+    detectDevice();
+    </script>
 """, unsafe_allow_html=True)
 
 # Session State
