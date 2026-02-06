@@ -44,8 +44,9 @@ data/raw/
 !data/processed/*.csv
 
 # Models  
-models/
-!models/.gitkeep
+# Allow model files but not large temp files
+!models/*.pkl
+!models/*.joblib
 
 # Reports
 !reports/*.csv
