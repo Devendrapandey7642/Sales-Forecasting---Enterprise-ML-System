@@ -40,16 +40,15 @@ env/
 *.ipynb_checkpoints
 
 # Data
-data/processed/
-*.csv
+data/raw/
+!data/processed/*.csv
 
-# Models
+# Models  
 models/
-*.pkl
-*.h5
+!models/.gitkeep
 
 # Reports
-reports/
+!reports/*.csv
 
 # OS
 .DS_Store
