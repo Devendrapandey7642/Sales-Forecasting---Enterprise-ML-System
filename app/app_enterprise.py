@@ -18,14 +18,14 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 # Import all enterprise modules
 try:
-    from mlops import ModelRegistry, ExperimentTracker, PerformanceMonitor, AuditLog
-    from auto_retrain import AutoRetrainingScheduler, BestModelSelector
-    from realtime import StreamDataSimulator, RealtimePredictionEngine, AnomalyDetector, RealTimeAlertSystem
-    from advanced_xai import CounterfactualExplainer, HumanExplainer, PerProductAnalyzer
-    from business_engine import InventoryOptimizer, ProfitOptimizer, StoreExpansionAnalyzer
-    from agentic_ai import AgenticAI
-    from security import UserManager, AccessControl, EnterpriseSecurityManager
-    from multi_tenant import TenantManager, DataIsolation, WhiteLabelManager
+    from src.mlops import ModelRegistry, ExperimentTracker, PerformanceMonitor, AuditLog
+    from src.auto_retrain import AutoRetrainingScheduler, BestModelSelector
+    from src.realtime import StreamDataSimulator, RealtimePredictionEngine, AnomalyDetector, RealTimeAlertSystem, RealtimeMonitoringPipeline
+    from src.advanced_xai import CounterfactualExplainer, HumanExplainer, PerProductAnalyzer
+    from src.business_engine import InventoryOptimizer, ProfitOptimizer, StoreExpansionAnalyzer
+    from src.agentic_ai import AgenticAI
+    from src.security import UserManager, AccessControl, EnterpriseSecurityManager
+    from src.multi_tenant import TenantManager, DataIsolation, WhiteLabelManager
     from dashboard_utils import DataManager, PredictionEngine, InsightGenerator, DataQualityChecker
     MODULES_LOADED = True
 except Exception as e:

@@ -26,49 +26,49 @@ from dashboard_utils import DataManager, PredictionEngine, InsightGenerator, Dat
 # Try to import enterprise modules
 MODULES = {}
 try:
-    from mlops import ModelRegistry, ExperimentTracker, AuditLog, PerformanceMonitor
+    from src.mlops import ModelRegistry, ExperimentTracker, AuditLog, PerformanceMonitor
     MODULES['mlops'] = True
 except:
     MODULES['mlops'] = False
 
 try:
-    from auto_retrain import AutoRetrainingScheduler
+    from src.auto_retrain import AutoRetrainingScheduler
     MODULES['auto_retrain'] = True
 except:
     MODULES['auto_retrain'] = False
 
 try:
-    from realtime import RealTimeAlertSystem
+    from src.realtime import RealTimeAlertSystem
     MODULES['realtime'] = True
 except:
     MODULES['realtime'] = False
 
 try:
-    from advanced_xai import CounterfactualExplainer
+    from src.advanced_xai import CounterfactualExplainer
     MODULES['xai'] = True
 except:
     MODULES['xai'] = False
 
 try:
-    from business_engine import InventoryOptimizer, ProfitOptimizer
+    from src.business_engine import InventoryOptimizer, ProfitOptimizer
     MODULES['business'] = True
 except:
     MODULES['business'] = False
 
 try:
-    from agentic_ai import AgenticAI
+    from src.agentic_ai import AgenticAI
     MODULES['agentic'] = True
 except:
     MODULES['agentic'] = False
 
 try:
-    from security import UserManager, AccessControl
+    from src.security import UserManager, AccessControl
     MODULES['security'] = True
 except:
     MODULES['security'] = False
 
 try:
-    from multi_tenant import TenantManager
+    from src.multi_tenant import TenantManager
     MODULES['multitenant'] = True
 except:
     MODULES['multitenant'] = False

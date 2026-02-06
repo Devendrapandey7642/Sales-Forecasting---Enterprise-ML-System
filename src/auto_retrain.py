@@ -27,7 +27,6 @@ from mlops import (
     ModelRegistry, ExperimentTracker, AuditLog, PerformanceMonitor, 
     TrainProdComparison, calculate_data_hash
 )
-from utils import convert_to_native
 
 
 class AutoRetrainingScheduler:
